@@ -58,8 +58,8 @@ function typeNow(){
 }
 function save(){localStorage.setItem("racer-save",JSON.stringify(p))}
 function load(){try{p=JSON.parse(localStorage.getItem("racer-save"))}catch(e){p=null}}
-function top(){ $("#top").innerHTML=p?`<span class="badge">${p.age}세</span><span class="badge">OVR ${p.ovr}</span>`:""; }
-function shell(html){top();$("#app").innerHTML=html}
+function updateTop(){ $("#top").innerHTML=p?`<span class="badge">${p.age}세</span><span class="badge">OVR ${p.ovr}</span>`:""; }
+function shell(html){updateTop();$("#app").innerHTML=html}
 
 function home(){
 shell(`<div class="hero">
