@@ -4,200 +4,2073 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>🏁 이번 생은 레이서다</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0b0d12;color:#f4f6fa;font-family:Arial,"Noto Sans KR",sans-serif}
-button,input{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:12px 16px;background:#e8edf5;color:#10131a;font-weight:700}
-button:hover{filter:brightness(1.08)}.wrap{max-width:1050px;margin:auto;padding:28px 18px}.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #262b35;padding-bottom:18px;margin-bottom:22px}
-.logo{font-size:25px;font-weight:900}.muted{color:#8d96a5}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:#141820;border:1px solid #262c37;border-radius:16px;padding:20px}.wide{grid-column:1/-1}
-.hero{padding:34px;border-radius:20px;background:linear-gradient(135deg,#191e29,#11141b);border:1px solid #2b3240}
-h1{font-size:42px;margin:0 0 10px}h2{margin:0 0 16px}h3{margin:0 0 8px}.big{font-size:30px;font-weight:900}.accent{color:#9fc5ff}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.between{display:flex;justify-content:space-between;gap:12px;align-items:center}
-input{width:100%;padding:13px;border-radius:10px;border:1px solid #303746;background:#0d1016;color:white;margin:6px 0 12px}
-label{font-weight:700;font-size:14px}.choice{background:#191e28;border:1px solid #303746;color:white;text-align:left;width:100%;margin:5px 0}.choice.selected{border-color:#9fc5ff;background:#202938}
-.stat{margin:10px 0}.bar{height:8px;background:#272d38;border-radius:99px;overflow:hidden}.fill{height:100%;background:#dce8ff}.statline{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px}
-table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #292f3a;text-align:left;font-size:14px}
-.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#242b37;color:#cbd5e5;font-size:12px;font-weight:700;margin:2px}
-.good{color:#bfe6c5}.bad{color:#ffb4b4}.warn{color:#ffe2a3}
-.feed{padding:12px 0;border-bottom:1px solid #292f3a}.feed:last-child{border:0}
-.hidden{display:none}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button{background:#171c25;color:#cbd2de}
-.small{font-size:13px}.center{text-align:center}.result{font-size:58px;font-weight:900}
-@media(max-width:760px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}h1{font-size:31px}.top{align-items:flex-start;gap:12px;flex-direction:column}}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#0b0d12;
+  color:#f4f6fa;
+  font-family:Arial,"Noto Sans KR",sans-serif;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+  border-radius:10px;
+  padding:12px 16px;
+  background:#e8edf5;
+  color:#10131a;
+  font-weight:700;
+}
+
+button:hover{
+  filter:brightness(1.08);
+}
+
+.wrap{
+  max-width:1050px;
+  margin:auto;
+  padding:28px 18px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #262b35;
+  padding-bottom:18px;
+  margin-bottom:22px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.card{
+  background:#141820;
+  border:1px solid #262c37;
+  border-radius:16px;
+  padding:20px;
+}
+
+.wide{
+  grid-column:1/-1;
+}
+
+.hero{
+  padding:34px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#191e29,#11141b);
+  border:1px solid #2b3240;
+}
+
+h1{
+  font-size:42px;
+  margin:0 0 10px;
+}
+
+h2{
+  margin:0 0 16px;
+}
+
+h3{
+  margin:0 0 8px;
+}
+
+.big{
+  font-size:30px;
+  font-weight:900;
+}
+
+.result{
+  font-size:58px;
+  font-weight:900;
+}
+
+.muted{
+  color:#8d96a5;
+}
+
+.small{
+  font-size:13px;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.between{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #303746;
+  background:#0d1016;
+  color:white;
+  margin:6px 0 12px;
+}
+
+label{
+  font-weight:700;
+  font-size:14px;
+}
+
+.choice{
+  background:#191e28;
+  border:1px solid #303746;
+  color:white;
+  text-align:left;
+  width:100%;
+  margin:5px 0;
+}
+
+.choice.selected{
+  border-color:#9fc5ff;
+  background:#202938;
+}
+
+.stat{
+  margin:10px 0;
+}
+
+.statline{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-bottom:5px;
+}
+
+.bar{
+  height:8px;
+  background:#272d38;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.fill{
+  height:100%;
+  background:#dce8ff;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+td,th{
+  padding:10px;
+  border-bottom:1px solid #292f3a;
+  text-align:left;
+  font-size:14px;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#242b37;
+  color:#cbd5e5;
+  font-size:12px;
+  font-weight:700;
+  margin:2px;
+}
+
+.feed{
+  padding:12px 0;
+  border-bottom:1px solid #292f3a;
+}
+
+.feed:last-child{
+  border:0;
+}
+
+.center{
+  text-align:center;
+}
+
+.notice{
+  padding:12px;
+  border-radius:10px;
+  background:#10151e;
+  border:1px solid #293141;
+  margin-top:12px;
+}
+
+@media(max-width:760px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .wide{
+    grid-column:auto;
+  }
+
+  h1{
+    font-size:31px;
+  }
+
+  .top{
+    align-items:flex-start;
+    gap:12px;
+    flex-direction:column;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <div class="wrap">
-<div class="top"><div class="logo">🏁 이번 생은 레이서다</div><div id="top"></div></div>
-<div id="app"></div>
+
+  <div class="top">
+    <div class="logo">🏁 이번 생은 레이서다</div>
+    <div id="topInfo"></div>
+  </div>
+
+  <div id="app"></div>
+
 </div>
+
+
 <script>
-const $=s=>document.querySelector(s);
-const names=["메르세데스","페라리","맥라렌","레드불 레이싱","레이싱 불스","알핀","하스","아우디","윌리엄스","애스턴 마틴","캐딜락"];
-const categories=["F4","Formula Regional","F3","F2","F1"];
-const types=[
-["⚡ 스피드스터",[67,64,39,47,42,41]],
-["🌀 코너 스페셜리스트",[52,67,47,48,46,43]],
-["🛑 브레이킹 마스터",[47,51,65,55,54,28]],
-["🏁 레이스 크래프터",[43,46,50,66,64,31]],
-["🎯 정밀형",[45,50,61,44,64,36]],
-["🔧 적응형",[45,46,46,47,58,59]],
-["⚖️ 올라운더",[51,51,50,51,49,48]]
+"use strict";
+
+/* =========================
+   기본 데이터
+========================= */
+
+const app = document.getElementById("app");
+const topInfo = document.getElementById("topInfo");
+
+const teams = [
+  "메르세데스",
+  "페라리",
+  "맥라렌",
+  "레드불 레이싱",
+  "레이싱 불스",
+  "알핀",
+  "하스",
+  "아우디",
+  "윌리엄스",
+  "애스턴 마틴",
+  "캐딜락"
 ];
-const statNames=["스피드","코너링","브레이킹","레이스 감각","판단력","적응력"];
-let p=null;
 
-function rnd(a,b){return Math.floor(Math.random()*(b-a+1))+a}
-function avg(a){return a.reduce((x,y)=>x+y,0)/a.length}
-function clamp(x,a=1,b=99){return Math.max(a,Math.min(b,x))}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function calcOVR(){return Math.round(avg(p.stats))}
-function typeNow(){
- let s=p.stats, scores=[
- s[0]+s[1],s[1]+s[2],s[2]+s[3],s[3]+s[4],s[2]+s[4],s[4]+s[5],avg(s)*2
- ]; let i=scores.indexOf(Math.max(...scores)); return types[i][0]
-}
-function save(){localStorage.setItem("racer-save",JSON.stringify(p))}
-function load(){try{p=JSON.parse(localStorage.getItem("racer-save"))}catch(e){p=null}}
-function updateTop(){ $("#top").innerHTML=p?`<span class="badge">${p.age}세</span><span class="badge">OVR ${p.ovr}</span>`:""; }
-function shell(html){updateTop();$("#app").innerHTML=html}
+const categories = [
+  "F4",
+  "Formula Regional",
+  "F3",
+  "F2",
+  "F1"
+];
 
-function home(){
-shell(`<div class="hero">
-<h1>이번 생은 레이서다</h1>
-<p class="muted">한 명의 레이서가 F4에서 시작해 어디까지 올라갈 수 있을까?</p>
-<div class="row" style="margin-top:24px">
-<button onclick="newGame()">새로운 커리어 시작</button>
-${p?'<button onclick="continueGame()">기존 커리어 이어하기</button>':''}
-</div></div>
-<div class="grid" style="margin-top:16px">
-<div class="card"><h3>🎯 핵심</h3><p class="muted">OVR과 실제 시즌 성적은 서로 다르게 움직이지예. 좋은 차를 못 만나면 고OVR이어도 고전할 수 있고, 반대로 낮은 OVR로도 뛰어난 시즌을 만들 수 있지예.</p></div>
-<div class="card"><h3>📈 성장</h3><p class="muted">선수마다 숨겨진 잠재력과 전성기 시점이 다르지예. 누구나 OVR 90을 찍는 구조가 아니지예.</p></div>
-<div class="card"><h3>🎲 변수</h3><p class="muted">계약, 방출, 드라이버 시장, 테스트, 승격 실패가 커리어를 완전히 바꿀 수 있지예.</p></div>
-</div>`);
+const statNames = [
+  "스피드",
+  "코너링",
+  "브레이킹",
+  "레이스 감각",
+  "판단력",
+  "적응력"
+];
+
+const driverTypes = [
+  {
+    name:"⚡ 스피드스터",
+    stats:[67,64,39,47,42,41]
+  },
+  {
+    name:"🌀 코너 스페셜리스트",
+    stats:[52,67,47,48,46,43]
+  },
+  {
+    name:"🛑 브레이킹 마스터",
+    stats:[47,51,65,55,54,28]
+  },
+  {
+    name:"🏁 레이스 크래프터",
+    stats:[43,46,50,66,64,31]
+  },
+  {
+    name:"🎯 정밀형",
+    stats:[45,50,61,44,64,36]
+  },
+  {
+    name:"🔧 적응형",
+    stats:[45,46,46,47,58,59]
+  },
+  {
+    name:"⚖️ 올라운더",
+    stats:[51,51,50,51,49,48]
+  }
+];
+
+let player = null;
+let selectedTeam = teams[0];
+let candidateTypes = [];
+let selectedStats = null;
+
+
+/* =========================
+   공통 함수
+========================= */
+
+function randomInt(min,max){
+  return Math.floor(Math.random()*(max-min+1))+min;
 }
+
+function average(arr){
+  return arr.reduce((a,b)=>a+b,0)/arr.length;
+}
+
+function clamp(value,min=1,max=99){
+  return Math.max(min,Math.min(max,value));
+}
+
+function escapeHTML(text){
+  return String(text).replace(/[&<>"']/g,function(c){
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[c];
+  });
+}
+
+function categoryName(){
+  return categories[player.category];
+}
+
+function teamName(){
+  return [
+    "F4 팀",
+    "Formula Regional 팀",
+    "F3 팀",
+    "F2 팀",
+    "F1 팀"
+  ][player.category] || "레이싱 팀";
+}
+
+function calculateOVR(){
+  return Math.round(average(player.stats));
+}
+
+function saveGame(){
+  try{
+    localStorage.setItem(
+      "racer-save",
+      JSON.stringify(player)
+    );
+  }catch(e){}
+}
+
+function loadGame(){
+  try{
+    const data=localStorage.getItem("racer-save");
+
+    if(data){
+      player=JSON.parse(data);
+    }
+  }catch(e){
+    player=null;
+  }
+}
+
+function clearGame(){
+  try{
+    localStorage.removeItem("racer-save");
+  }catch(e){}
+}
+
+function updateTop(){
+
+  if(!player){
+    topInfo.innerHTML="";
+    return;
+  }
+
+  topInfo.innerHTML=
+    '<span class="badge">'+player.age+'세</span>'+
+    '<span class="badge">OVR '+player.ovr+'</span>'+
+    '<span class="badge">'+categoryName()+'</span>';
+}
+
+function render(html){
+  updateTop();
+  app.innerHTML=html;
+}
+
+
+/* =========================
+   드라이버 타입
+========================= */
+
+function getCurrentType(){
+
+  if(!player){
+    return "⚖️ 올라운더";
+  }
+
+  const s=player.stats;
+
+  const scores=[
+    s[0]+s[1],
+    s[1]+s[2],
+    s[2]+s[3],
+    s[3]+s[4],
+    s[2]+s[4],
+    s[4]+s[5],
+    average(s)*2
+  ];
+
+  let best=0;
+
+  for(let i=1;i<scores.length;i++){
+    if(scores[i]>scores[best]){
+      best=i;
+    }
+  }
+
+  return driverTypes[best].name;
+}
+
+
+/* =========================
+   홈
+========================= */
+
+function showHome(){
+
+  render(`
+    <div class="hero">
+
+      <h1>이번 생은 레이서다</h1>
+
+      <p class="muted">
+        한 명의 레이서가 F4에서 시작해 어디까지 올라갈 수 있을까?
+      </p>
+
+      <div class="row" style="margin-top:24px">
+
+        <button onclick="newGame()">
+          새로운 커리어 시작
+        </button>
+
+        ${
+          player
+          ?
+          `<button onclick="continueGame()">
+            기존 커리어 이어하기
+          </button>`
+          :
+          ""
+        }
+
+      </div>
+
+    </div>
+
+    <div class="grid" style="margin-top:16px">
+
+      <div class="card">
+        <h3>🎯 OVR과 성적</h3>
+        <p class="muted">
+          OVR이 높다고 항상 좋은 시즌을 보내는 것은 아닙니다.
+          차량 성능과 랜덤 변수 때문에 낮은 OVR의 드라이버가
+          더 좋은 성적을 낼 수도 있습니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📈 성장</h3>
+        <p class="muted">
+          드라이버마다 숨겨진 잠재력이 다릅니다.
+          누구나 OVR 90을 찍는 구조가 아닙니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🎲 커리어 변수</h3>
+        <p class="muted">
+          승격, 계약, 방출, 드라이버 시장과 테스트 결과에 따라
+          커리어가 크게 달라집니다.
+        </p>
+      </div>
+
+    </div>
+  `);
+}
+
+
+/* =========================
+   드라이버 생성
+========================= */
+
 function newGame(){
-shell(`<div class="card"><h2>드라이버 생성</h2>
-<label>이름</label><input id="name" placeholder="예: 김민준">
-<label>등번호 (1~99)</label><input id="num" type="number" min="1" max="99" placeholder="예: 27">
-<label>선호 F1 팀</label><div id="teams"></div>
-<h3 style="margin-top:18px">드라이버 스타일 선택</h3><p class="muted small">3개의 후보 중 하나를 선택하면 기본 능력치가 정해지지예.</p>
-<div id="types"></div><div class="card" style="margin-top:12px;background:#0f131a"><div id="preview" class="muted">스타일을 선택하면 능력치가 표시되지예.</div></div>
-<button onclick="startGame()" style="margin-top:14px">커리어 시작</button>
-</div>`);
-let team=names[0],chosen=null;
-$("#teams").innerHTML=names.map((x,i)=>`<button class="choice ${i===0?'selected':''}" onclick="team='${x}';document.querySelectorAll('#teams .choice').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">${x}</button>`).join("");
-let candidates=[...types].sort(()=>Math.random()-.5).slice(0,3);
-$("#types").innerHTML=candidates.map((x,i)=>`<button class="choice" onclick="chooseType(${i})"><b>${x[0]}</b><br><span class="small muted">능력치 후보 보기</span></button>`).join("");
-window._candidates=candidates; window.chooseType=i=>{
-chosen=window._candidates[i]; document.querySelectorAll('#types .choice').forEach(b=>b.classList.remove('selected'));document.querySelectorAll('#types .choice')[i].classList.add('selected');
-let vals=chosen[1].map(v=>clamp(v+rnd(-4,4)));$("#preview").innerHTML=vals.map((v,j)=>`<div class="stat"><div class="statline"><span>${statNames[j]}</span><b>${v}</b></div><div class="bar"><div class="fill" style="width:${v}%"></div></div></div>`).join("");
-window._selectedStats=vals;};
-window.startGame=()=>{
-let n=$("#name").value.trim(), num=Number($("#num").value);
-if(!n||!Number.isInteger(num)||num<1||num>99){alert("이름과 등번호(1~99)를 입력해줘지예.");return}
-if(!chosen){alert("드라이버 스타일을 하나 선택해줘지예.");return}
-p={name:n,num,preferred:team,age:16,category:0,team:"F4 팀",contract:2,
-stats:[...window._selectedStats],ovr:calcOVR(),potential:rnd(68,91),peakAge:rnd(27,32),
-peak:0,history:[],awards:[],records:[],fans:[],tests:0,releases:0};
-p.peak=clamp(Math.min(p.potential,p.ovr+rnd(12,24)));save();seasonIntro();
-}
-}
-function seasonIntro(){
-let cat=categories[p.category];
-shell(`<div class="hero"><div class="muted">${p.age}세 · ${cat}</div><h1>새로운 시즌</h1><p>${esc(p.name)}의 ${p.age}번째 생이 아니라, <b>${p.age}세의 첫 시즌</b>이 시작되지예.</p>
-<div class="row"><button onclick="simulate()">🏎️ 시즌 시뮬레이션</button><button onclick="profile()">드라이버 보기</button></div></div>`);
-}
-function profile(){
-shell(`<div class="grid"><div class="card wide"><div class="between"><div><h2>${esc(p.name)} <span class="badge">#${p.num}</span></h2><p class="muted">${p.age}세 · ${categories[p.category]} · ${esc(p.team)}</p></div><div class="result">${p.ovr}</div></div><p><span class="badge">${typeNow()}</span> <span class="badge">선호 F1: ${esc(p.preferred)}</span></p></div>
-<div class="card"><h3>능력치</h3>${p.stats.map((v,i)=>`<div class="stat"><div class="statline"><span>${statNames[i]}</span><b>${v}</b></div><div class="bar"><div class="fill" style="width:${v}%"></div></div></div>`).join("")}</div>
-<div class="card"><h3>커리어 정보</h3><p>잠재력: <b>비공개</b></p><p>전성기 예상 시점: <b>비공개</b></p><p>계약: <b>${p.contract}년</b></p><p>방출 경험: <b>${p.releases}회</b></p></div>
-<div class="card"><h3>커리어 기록</h3>${p.history.length?p.history.slice().reverse().map(h=>`<div class="feed">${h.age}세 · ${h.cat} · ${h.rank}위 · OVR ${h.ovr}</div>`).join(""):"아직 시즌 기록이 없지예."}</div>
-<div class="card"><button onclick="seasonIntro()">시즌으로 돌아가기</button></div></div>`);
+
+  selectedTeam=teams[0];
+  selectedStats=null;
+  candidateTypes=[];
+
+  render(`
+
+    <div class="card">
+
+      <h2>드라이버 생성</h2>
+
+      <label>이름</label>
+      <input
+        id="driverName"
+        placeholder="예: 김민준"
+      >
+
+      <label>등번호 (1~99)</label>
+      <input
+        id="driverNumber"
+        type="number"
+        min="1"
+        max="99"
+        placeholder="예: 27"
+      >
+
+      <label>선호 F1 팀</label>
+
+      <div id="teamList"></div>
+
+      <h3 style="margin-top:22px">
+        드라이버 스타일 선택
+      </h3>
+
+      <p class="muted small">
+        세 가지 후보 중 하나를 선택합니다.
+      </p>
+
+      <div id="typeList"></div>
+
+      <div
+        class="card"
+        style="margin-top:14px;background:#0f131a"
+      >
+        <div id="statPreview" class="muted">
+          스타일을 선택하면 능력치가 표시됩니다.
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:14px">
+
+        <button onclick="startCareer()">
+          커리어 시작
+        </button>
+
+        <button
+          onclick="showHome()"
+          style="background:#252b35;color:white"
+        >
+          돌아가기
+        </button>
+
+      </div>
+
+    </div>
+  `);
+
+
+  const teamList=document.getElementById("teamList");
+
+  teamList.innerHTML=teams.map(function(team,index){
+
+    return `
+      <button
+        class="choice ${index===0?"selected":""}"
+        onclick="selectTeam(${index})"
+      >
+        ${team}
+      </button>
+    `;
+
+  }).join("");
+
+
+  candidateTypes=[...driverTypes]
+    .sort(function(){
+      return Math.random()-0.5;
+    })
+    .slice(0,3);
+
+
+  document.getElementById("typeList").innerHTML=
+    candidateTypes.map(function(type,index){
+
+      return `
+        <button
+          class="choice"
+          onclick="selectDriverType(${index})"
+        >
+          <b>${type.name}</b>
+          <br>
+          <span class="small muted">
+            능력치 후보 보기
+          </span>
+        </button>
+      `;
+
+    }).join("");
 }
 
-function simulate(){
-let base=p.ovr, cat=categories[p.category], carBonus=p.stats[3]*.08+p.stats[4]*.05+p.stats[5]*.03;
-let teamPower=rnd(-12,12), variance=rnd(-20,20), performance=base*.62+carBonus+teamPower+variance;
-let maxRank=cat==="F1"?20:30;
-let rank=clamp(Math.round((maxRank+1)-performance/4),1,maxRank);
-let wins=clamp(Math.round((performance-60)/9)+rnd(0,2),0,cat==="F1"?8:10);
-let podiums=clamp(wins+rnd(0,Math.max(1,5-Math.floor(rank/8))),0,15);
-let poles=clamp(Math.round(wins*.6)+rnd(0,2),0,10);
-let points=clamp(Math.round((maxRank-rank+1)*rnd(3,7)+wins*5+rnd(-8,8)),0,999);
-let dnf=clamp(rnd(0,3)+ (p.stats[4]<45?1:0),0,6);
-let finish=clamp(24-dnf,1,24);
-let teamRank=clamp(rank+rnd(-5,7),1,cat==="F1"?11:20);
-let award=[];
-if(rank===1)award.push("🏆 챔피언");
-if(rank<=3)award.push("🥇 시즌 베스트 드라이버");
-if(p.age===16&&rank<=5)award.push("🌟 올해의 신인");
-if(poles>=3)award.push("🎯 폴 포지션 스페셜");
-if(wins>=3)award.push("🏁 다승 기록");
-let rec=[];
-if(rank===1)rec.push("커리어 첫 챔피언십");
-if(wins>=3)rec.push("한 시즌 3승 이상");
-if(podiums>=5)rec.push("한 시즌 5회 이상 포디움");
-if(p.history.length===0&&rank<=3)rec.push("데뷔 시즌 톱3");
-let summary=rank<=3?"첫 시즌부터 강렬한 존재감을 보여줬습니다.":rank<=8?"가능성을 보여줬지만 아직 더 올라갈 여지가 있습니다.":"성적은 아쉬웠지만 커리어는 이제 시작입니다.";
-let ovrBefore=p.ovr; grow=ageGrowth(); p.stats=grow.stats;p.ovr=grow.ovr;
-p.history.push({age:p.age,cat,rank,ovr:ovrBefore,points,wins,podiums});p.awards.push(...award);p.records.push(...rec);
-let fan=rank<=3?"“이 드라이버, 생각보다 훨씬 잘하는데?”":rank<=8?"“다음 시즌에는 더 올라갈 수 있을 듯.”":"“아직은 시간이 더 필요해 보인다.”";p.fans.push(fan);save();
-resultPage({cat,rank,wins,podiums,poles,points,finish,dnf,teamRank,award,rec,summary,ovrBefore,ovrAfter:p.ovr,teamPower});
+function selectTeam(index){
+
+  selectedTeam=teams[index];
+
+  document
+    .querySelectorAll("#teamList .choice")
+    .forEach(function(button,i){
+
+      button.classList.toggle(
+        "selected",
+        i===index
+      );
+
+    });
 }
-function ageGrowth(){
-let a=p.age, delta=a<=20?rnd(2,6):a<=25?rnd(1,4):a<=30?rnd(0,2):a<=34?rnd(-1,1):a<=37?rnd(-3,-1):rnd(-7,-3);
-if(p.ovr>=p.peak)delta=Math.min(delta,0);
-let s=[...p.stats];for(let k=0;k<Math.max(1,Math.abs(delta));k++){let i=rnd(0,5);s[i]=clamp(s[i]+(delta>=0?rnd(0,2):rnd(-2,0)));}
-let o=clamp(Math.round(avg(s)));if(delta<0)o=Math.min(o,p.ovr+delta);else o=Math.max(o,p.ovr+delta);
-if(o>p.peak)o=p.peak;
-return{stats:s,ovr:o};
+
+function selectDriverType(index){
+
+  const type=candidateTypes[index];
+
+  selectedStats=type.stats.map(function(value){
+    return clamp(value+randomInt(-4,4));
+  });
+
+  document
+    .querySelectorAll("#typeList .choice")
+    .forEach(function(button,i){
+
+      button.classList.toggle(
+        "selected",
+        i===index
+      );
+
+    });
+
+
+  document.getElementById("statPreview").innerHTML=
+
+    "<h3>"+type.name+"</h3>"+
+
+    selectedStats.map(function(value,index){
+
+      return `
+        <div class="stat">
+
+          <div class="statline">
+            <span>${statNames[index]}</span>
+            <b>${value}</b>
+          </div>
+
+          <div class="bar">
+            <div
+              class="fill"
+              style="width:${value}%"
+            ></div>
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
 }
-function resultPage(r){
-shell(`<div class="card"><div class="muted">${p.age}세 · ${r.cat}</div><h1>${r.rank===1?"🏆 챔피언!":r.rank<=3?"🥉 포디움!":"시즌 종료"}</h1><p>${r.summary}</p>
-<div class="grid" style="margin-top:18px">
-<div class="card"><h3>시즌 성적</h3><table><tr><td>챔피언십 순위</td><th>${r.rank}위</th></tr><tr><td>평균 완주 순위</td><th>${clamp(Math.round(r.rank+r.teamPower/3),1,30)}위</th></tr><tr><td>우승</td><th>${r.wins}회</th></tr><tr><td>포디움</td><th>${r.podiums}회</th></tr><tr><td>폴</td><th>${r.poles}회</th></tr><tr><td>포인트</td><th>${r.points}</th></tr><tr><td>완주</td><th>${r.finish}회</th></tr><tr><td>DNF</td><th>${r.dnf}회</th></tr></table></div>
-<div class="card"><h3>🏅 수상</h3>${r.award.length?r.award.map(x=>`<span class="badge">${x}</span>`).join(""):"이번 시즌 수상 없음"}<h3 style="margin-top:20px">📖 기록</h3>${r.rec.length?r.rec.map(x=>`<div class="feed">${x}</div>`).join(""):"새 기록 없음"}</div>
-<div class="card"><h3>🏎️ 팀 성적</h3><p>${esc(p.team)}</p><p>팀 순위 <b>${r.teamRank}위</b></p><p class="muted">차량 성능과 팀 전략도 시즌 결과에 영향을 줬습니다.</p><h3>📈 OVR 변화</h3><p class="big">${r.ovrBefore} → ${r.ovrAfter}</p></div>
-<div class="card wide"><h3>📱 팬 피드</h3>${p.fans.slice(-3).reverse().map(x=>`<div class="feed">${x}</div>`).join("")}</div>
-<div class="card wide"><h3>📋 상세 기록</h3><table><tr><th>항목</th><th>기록</th><th>의미</th></tr><tr><td>차량 변수</td><td>${r.teamPower>0?"유리":"불리"} (${r.teamPower})</td><td>차량/팀 경쟁력의 시즌 변수</td></tr><tr><td>현재 스타일</td><td>${typeNow()}</td><td>성장에 따라 스타일도 바뀔 수 있음</td></tr><tr><td>커리어 OVR</td><td>${p.ovr}</td><td>실제 시즌 순위와 별개인 능력치</td></tr></table></div>
-</div>
-<div class="row" style="margin-top:18px"><button onclick="careerDecision()">다음 시즌으로</button><button onclick="retire()">은퇴하기</button></div></div>`);
+
+
+/* =========================
+   커리어 시작
+========================= */
+
+function startCareer(){
+
+  const nameInput=document.getElementById("driverName");
+  const numberInput=document.getElementById("driverNumber");
+
+  const name=nameInput.value.trim();
+  const number=Number(numberInput.value);
+
+  if(
+    !name ||
+    !Number.isInteger(number) ||
+    number<1 ||
+    number>99
+  ){
+
+    alert("이름과 등번호(1~99)를 입력해줘지예.");
+    return;
+  }
+
+  if(!selectedStats){
+
+    alert("드라이버 스타일을 하나 선택해줘지예.");
+    return;
+  }
+
+
+  player={
+    name:name,
+    number:number,
+    preferredTeam:selectedTeam,
+
+    age:16,
+
+    category:0,
+
+    team:"F4 팀",
+
+    contract:2,
+
+    stats:[...selectedStats],
+
+    ovr:Math.round(average(selectedStats)),
+
+    potential:randomInt(68,91),
+
+    peakAge:randomInt(27,32),
+
+    peak:0,
+
+    history:[],
+
+    awards:[],
+
+    records:[],
+
+    fans:[],
+
+    tests:0,
+
+    releases:0
+  };
+
+
+  player.peak=Math.min(
+    player.potential,
+    player.ovr+randomInt(10,24)
+  );
+
+
+  saveGame();
+
+  seasonIntro();
 }
+
+
+/* =========================
+   시즌 시작
+========================= */
+
+function seasonIntro(){
+
+  render(`
+
+    <div class="hero">
+
+      <div class="muted">
+        ${player.age}세 · ${categoryName()}
+      </div>
+
+      <h1>
+        새로운 시즌
+      </h1>
+
+      <p>
+        <b>${escapeHTML(player.name)}</b>의
+        ${player.age}세 시즌이 시작됩니다.
+      </p>
+
+      <div class="notice">
+        현재 OVR:
+        <b>${player.ovr}</b>
+        · 현재 스타일:
+        <b>${getCurrentType()}</b>
+      </div>
+
+      <div class="row" style="margin-top:18px">
+
+        <button onclick="simulateSeason()">
+          🏎️ 시즌 시뮬레이션
+        </button>
+
+        <button onclick="showProfile()">
+          드라이버 보기
+        </button>
+
+      </div>
+
+    </div>
+  `);
+}
+
+
+/* =========================
+   프로필
+========================= */
+
+function showProfile(){
+
+  render(`
+
+    <div class="grid">
+
+      <div class="card wide">
+
+        <div class="between">
+
+          <div>
+
+            <h2>
+              ${escapeHTML(player.name)}
+              <span class="badge">
+                #${player.number}
+              </span>
+            </h2>
+
+            <p class="muted">
+              ${player.age}세 ·
+              ${categoryName()} ·
+              ${escapeHTML(player.team)}
+            </p>
+
+          </div>
+
+          <div class="result">
+            ${player.ovr}
+          </div>
+
+        </div>
+
+        <p>
+
+          <span class="badge">
+            ${getCurrentType()}
+          </span>
+
+          <span class="badge">
+            선호 F1:
+            ${escapeHTML(player.preferredTeam)}
+          </span>
+
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>능력치</h3>
+
+        ${player.stats.map(function(value,index){
+
+          return `
+            <div class="stat">
+
+              <div class="statline">
+                <span>${statNames[index]}</span>
+                <b>${value}</b>
+              </div>
+
+              <div class="bar">
+                <div
+                  class="fill"
+                  style="width:${value}%"
+                ></div>
+              </div>
+
+            </div>
+          `;
+
+        }).join("")}
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>커리어 정보</h3>
+
+        <p>
+          잠재력:
+          <b>비공개</b>
+        </p>
+
+        <p>
+          전성기 예상:
+          <b>비공개</b>
+        </p>
+
+        <p>
+          계약:
+          <b>${player.contract}년</b>
+        </p>
+
+        <p>
+          방출 경험:
+          <b>${player.releases}회</b>
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>커리어 기록</h3>
+
+        ${
+          player.history.length
+
+          ?
+
+          player.history
+            .slice()
+            .reverse()
+            .map(function(history){
+
+              return `
+                <div class="feed">
+
+                  ${history.age}세 ·
+                  ${history.category} ·
+                  ${history.rank}위 ·
+                  OVR ${history.ovr}
+
+                </div>
+              `;
+
+            })
+            .join("")
+
+          :
+
+          "아직 시즌 기록이 없습니다."
+        }
+
+      </div>
+
+
+      <div class="card wide">
+
+        <button onclick="seasonIntro()">
+          시즌으로 돌아가기
+        </button>
+
+      </div>
+
+    </div>
+
+  `);
+}
+
+
+/* =========================
+   시즌 시뮬레이션
+========================= */
+
+function simulateSeason(){
+
+  const base=player.ovr;
+
+  const carBonus=
+    player.stats[3]*0.08+
+    player.stats[4]*0.05+
+    player.stats[5]*0.03;
+
+  const teamPower=randomInt(-12,12);
+
+  const variance=randomInt(-20,20);
+
+  const performance=
+    base*0.62+
+    carBonus+
+    teamPower+
+    variance;
+
+  const maxRank=
+    categoryName()==="F1"
+    ? 20
+    : 30;
+
+  const rank=clamp(
+    Math.round((maxRank+1)-performance/4),
+    1,
+    maxRank
+  );
+
+
+  const wins=clamp(
+    Math.round((performance-60)/9)+randomInt(0,2),
+    0,
+    categoryName()==="F1"?8:10
+  );
+
+
+  const podiums=clamp(
+    wins+
+    randomInt(
+      0,
+      Math.max(
+        1,
+        5-Math.floor(rank/8)
+      )
+    ),
+    0,
+    15
+  );
+
+
+  const poles=clamp(
+    Math.round(wins*0.6)+randomInt(0,2),
+    0,
+    10
+  );
+
+
+  const points=clamp(
+    Math.round(
+      (maxRank-rank+1)*
+      randomInt(3,7)
+      +
+      wins*5
+      +
+      randomInt(-8,8)
+    ),
+    0,
+    999
+  );
+
+
+  const dnf=clamp(
+    randomInt(0,3)+
+    (player.stats[4]<45?1:0),
+    0,
+    6
+  );
+
+
+  const finishes=clamp(
+    24-dnf,
+    1,
+    24
+  );
+
+
+  const teamRank=clamp(
+    rank+randomInt(-5,7),
+    1,
+    categoryName()==="F1"?11:20
+  );
+
+
+  const awards=[];
+
+  if(rank===1)
+    awards.push("🏆 챔피언");
+
+  if(rank<=3)
+    awards.push("🥇 시즌 베스트 드라이버");
+
+  if(player.age===16 && rank<=5)
+    awards.push("🌟 올해의 신인");
+
+  if(poles>=3)
+    awards.push("🎯 폴 포지션 스페셜");
+
+  if(wins>=3)
+    awards.push("🏁 다승 기록");
+
+
+  const records=[];
+
+  if(rank===1)
+    records.push("커리어 첫 챔피언십");
+
+  if(wins>=3)
+    records.push("한 시즌 3승 이상");
+
+  if(podiums>=5)
+    records.push("한 시즌 5회 이상 포디움");
+
+  if(player.history.length===0 && rank<=3)
+    records.push("데뷔 시즌 톱3");
+
+
+  let summary;
+
+  if(rank<=3){
+
+    summary=
+      "첫 시즌부터 강렬한 존재감을 보여줬습니다.";
+
+  }else if(rank<=8){
+
+    summary=
+      "가능성을 보여줬지만 아직 더 올라갈 여지가 있습니다.";
+
+  }else{
+
+    summary=
+      "성적은 아쉬웠지만 커리어는 이제 시작입니다.";
+
+  }
+
+
+  const oldOVR=player.ovr;
+
+  const growth=applyGrowth();
+
+  player.stats=growth.stats;
+  player.ovr=growth.ovr;
+
+
+  player.history.push({
+
+    age:player.age,
+
+    category:categoryName(),
+
+    rank:rank,
+
+    ovr:oldOVR,
+
+    points:points,
+
+    wins:wins,
+
+    podiums:podiums,
+
+    poles:poles,
+
+    dnf:dnf,
+
+    teamRank:teamRank
+
+  });
+
+
+  player.awards.push(...awards);
+
+  player.records.push(...records);
+
+
+  let fan;
+
+  if(rank<=3){
+
+    fan="“이 드라이버, 생각보다 훨씬 잘하는데?”";
+
+  }else if(rank<=8){
+
+    fan="“다음 시즌에는 더 올라갈 수 있을 듯.”";
+
+  }else{
+
+    fan="“아직은 시간이 더 필요해 보인다.”";
+
+  }
+
+
+  player.fans.push(fan);
+
+  saveGame();
+
+
+  showSeasonResult({
+
+    category:categoryName(),
+
+    rank:rank,
+
+    wins:wins,
+
+    podiums:podiums,
+
+    poles:poles,
+
+    points:points,
+
+    finishes:finishes,
+
+    dnf:dnf,
+
+    teamRank:teamRank,
+
+    awards:awards,
+
+    records:records,
+
+    summary:summary,
+
+    oldOVR:oldOVR,
+
+    newOVR:player.ovr,
+
+    teamPower:teamPower
+
+  });
+}
+
+
+/* =========================
+   OVR 성장
+========================= */
+
+function applyGrowth(){
+
+  const age=player.age;
+
+  let delta;
+
+  if(age<=20){
+
+    delta=randomInt(2,6);
+
+  }else if(age<=25){
+
+    delta=randomInt(1,4);
+
+  }else if(age<=30){
+
+    delta=randomInt(0,2);
+
+  }else if(age<=34){
+
+    delta=randomInt(-1,1);
+
+  }else if(age<=37){
+
+    delta=randomInt(-3,-1);
+
+  }else{
+
+    delta=randomInt(-7,-3);
+
+  }
+
+
+  if(player.ovr>=player.peak){
+
+    delta=Math.min(delta,0);
+  }
+
+
+  const stats=[...player.stats];
+
+  const count=Math.max(
+    1,
+    Math.abs(delta)
+  );
+
+
+  for(let i=0;i<count;i++){
+
+    const statIndex=randomInt(0,5);
+
+    if(delta>0){
+
+      stats[statIndex]=clamp(
+        stats[statIndex]+randomInt(0,2)
+      );
+
+    }else if(delta<0){
+
+      stats[statIndex]=clamp(
+        stats[statIndex]+randomInt(-2,0)
+      );
+
+    }
+
+  }
+
+
+  let newOVR=Math.round(
+    average(stats)
+  );
+
+
+  if(delta<0){
+
+    newOVR=Math.min(
+      newOVR,
+      player.ovr+delta
+    );
+
+  }else if(delta>0){
+
+    newOVR=Math.max(
+      newOVR,
+      player.ovr+delta
+    );
+
+  }else{
+
+    newOVR=player.ovr;
+
+  }
+
+
+  newOVR=clamp(newOVR);
+
+  newOVR=Math.min(
+    newOVR,
+    player.peak
+  );
+
+
+  return {
+    stats:stats,
+    ovr:newOVR
+  };
+}
+
+
+/* =========================
+   시즌 결과
+========================= */
+
+function showSeasonResult(result){
+
+  render(`
+
+    <div class="card">
+
+      <div class="muted">
+        ${player.age}세 ·
+        ${result.category}
+      </div>
+
+      <h1>
+        ${
+          result.rank===1
+          ? "🏆 챔피언!"
+          : result.rank<=3
+          ? "🥉 포디움!"
+          : "시즌 종료"
+        }
+      </h1>
+
+      <p>
+        ${result.summary}
+      </p>
+
+
+      <div class="grid" style="margin-top:18px">
+
+
+        <div class="card">
+
+          <h3>시즌 성적</h3>
+
+          <table>
+
+            <tr>
+              <td>챔피언십 순위</td>
+              <th>${result.rank}위</th>
+            </tr>
+
+            <tr>
+              <td>평균 완주 순위</td>
+              <th>
+                ${clamp(
+                  Math.round(
+                    result.rank+
+                    result.teamPower/3
+                  ),
+                  1,
+                  30
+                )}위
+              </th>
+            </tr>
+
+            <tr>
+              <td>우승</td>
+              <th>${result.wins}회</th>
+            </tr>
+
+            <tr>
+              <td>포디움</td>
+              <th>${result.podiums}회</th>
+            </tr>
+
+            <tr>
+              <td>폴</td>
+              <th>${result.poles}회</th>
+            </tr>
+
+            <tr>
+              <td>포인트</td>
+              <th>${result.points}</th>
+            </tr>
+
+            <tr>
+              <td>완주</td>
+              <th>${result.finishes}회</th>
+            </tr>
+
+            <tr>
+              <td>DNF</td>
+              <th>${result.dnf}회</th>
+            </tr>
+
+          </table>
+
+        </div>
+
+
+        <div class="card">
+
+          <h3>🏅 수상</h3>
+
+          ${
+            result.awards.length
+            ?
+            result.awards
+              .map(x=>`<span class="badge">${x}</span>`)
+              .join("")
+            :
+            "이번 시즌 수상 없음"
+          }
+
+
+          <h3 style="margin-top:20px">
+            📖 기록
+          </h3>
+
+          ${
+            result.records.length
+            ?
+            result.records
+              .map(x=>`<div class="feed">${x}</div>`)
+              .join("")
+            :
+            "새 기록 없음"
+          }
+
+        </div>
+
+
+        <div class="card">
+
+          <h3>🏎️ 팀 성적</h3>
+
+          <p>
+            ${escapeHTML(player.team)}
+          </p>
+
+          <p>
+            팀 순위
+            <b>${result.teamRank}위</b>
+          </p>
+
+          <p class="muted">
+            차량 성능과 팀 전략도
+            시즌 결과에 영향을 줬습니다.
+          </p>
+
+          <h3>
+            📈 OVR 변화
+          </h3>
+
+          <p class="big">
+            ${result.oldOVR}
+            →
+            ${result.newOVR}
+          </p>
+
+        </div>
+
+
+        <div class="card wide">
+
+          <h3>📱 팬 피드</h3>
+
+          ${
+            player.fans
+              .slice(-3)
+              .reverse()
+              .map(x=>`<div class="feed">${x}</div>`)
+              .join("")
+          }
+
+        </div>
+
+
+        <div class="card wide">
+
+          <h3>📋 상세 기록</h3>
+
+          <table>
+
+            <tr>
+              <th>항목</th>
+              <th>기록</th>
+              <th>의미</th>
+            </tr>
+
+            <tr>
+              <td>차량 변수</td>
+
+              <td>
+                ${
+                  result.teamPower>0
+                  ? "유리"
+                  : "불리"
+                }
+                (${result.teamPower})
+              </td>
+
+              <td>
+                차량/팀 경쟁력의 시즌 변수
+              </td>
+            </tr>
+
+            <tr>
+              <td>현재 스타일</td>
+
+              <td>
+                ${getCurrentType()}
+              </td>
+
+              <td>
+                성장에 따라 스타일도 바뀔 수 있음
+              </td>
+            </tr>
+
+            <tr>
+              <td>커리어 OVR</td>
+
+              <td>
+                ${player.ovr}
+              </td>
+
+              <td>
+                실제 시즌 순위와 별개인 능력치
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="row" style="margin-top:18px">
+
+        <button onclick="careerDecision()">
+          다음 시즌으로
+        </button>
+
+        <button onclick="retire()">
+          은퇴하기
+        </button>
+
+      </div>
+
+    </div>
+  `);
+}
+
+
+/* =========================
+   커리어 결정
+========================= */
+
 function careerDecision(){
-p.age++;p.contract--; 
-let rank=p.history[p.history.length-1].rank, cat=p.category, success=rank<=Math.max(3,Math.ceil((cat===4?5:8)));
-let next="";
-if(p.contract<=0){
- if(success&&cat<4){p.category++;p.team=["F4 상위 팀","FR 상위 팀","F3 상위 팀","F2 상위 팀","F1 팀"][p.category];p.contract=rnd(1,3);next="승격 제안을 받았습니다."}
- else {p.releases++;next="계약이 종료되어 드라이버 시장으로 나왔습니다.";save();market(next);return}
-}else{
- if(success&&cat<4&&Math.random()<.72){p.category++;p.team=["F4 상위 팀","FR 상위 팀","F3 상위 팀","F2 상위 팀","F1 팀"][p.category];p.contract=rnd(1,3);next="좋은 시즌을 바탕으로 승격했습니다."}
- else next="현재 팀과의 계약을 이어갑니다.";
+
+  player.age++;
+  player.contract--;
+
+  const last=
+    player.history[player.history.length-1];
+
+  const rank=last.rank;
+
+  const currentCategory=player.category;
+
+  const success=
+    rank<=
+    Math.max(
+      3,
+      Math.ceil(
+        currentCategory===4
+        ? 5
+        : 8
+      )
+    );
+
+
+  let message="";
+
+
+  /* 계약 종료 */
+
+  if(player.contract<=0){
+
+    if(success && currentCategory<4){
+
+      player.category++;
+
+      player.team=
+        teamName();
+
+      player.contract=
+        randomInt(1,3);
+
+      message=
+        "좋은 시즌을 바탕으로 승격 제안을 받았습니다.";
+
+    }else{
+
+      player.releases++;
+
+      message=
+        "계약이 종료되어 드라이버 시장으로 나왔습니다.";
+
+      saveGame();
+
+      showMarket(message);
+
+      return;
+    }
+
+  }else{
+
+    /* 계약이 남아있을 때도 승격 가능 */
+
+    if(
+      success &&
+      currentCategory<4 &&
+      Math.random()<0.72
+    ){
+
+      player.category++;
+
+      player.team=
+        teamName();
+
+      player.contract=
+        randomInt(1,3);
+
+      message=
+        "좋은 시즌을 바탕으로 승격했습니다.";
+
+    }else{
+
+      message=
+        "현재 팀과의 계약을 이어갑니다.";
+
+    }
+
+  }
+
+
+  /* F2 → F1 */
+
+  if(
+    currentCategory===3 &&
+    success &&
+    player.age>=22 &&
+    Math.random()<0.28
+  ){
+
+    player.category=4;
+
+    player.team=
+      player.preferredTeam;
+
+    player.contract=
+      randomInt(1,3);
+
+    message=
+      "F1 시트 제안을 받았습니다!";
+
+  }
+
+
+  /* F1 재계약 실패 */
+
+  if(
+    player.category===4 &&
+    player.age>=34 &&
+    player.ovr<70 &&
+    Math.random()<0.35
+  ){
+
+    player.contract=0;
+
+    message=
+      "F1 팀에서 재계약에 실패했습니다.";
+
+  }
+
+
+  saveGame();
+
+
+  render(`
+
+    <div class="hero">
+
+      <div class="muted">
+        ${player.age}세
+      </div>
+
+      <h1>
+        커리어 결정
+      </h1>
+
+      <p>
+        ${message}
+      </p>
+
+      <div class="row">
+
+        <button onclick="seasonIntro()">
+          시즌 시작
+        </button>
+
+        <button
+          onclick="showMarket('다른 팀을 찾아볼 수도 있습니다.')"
+        >
+          드라이버 시장
+        </button>
+
+        <button onclick="showProfile()">
+          프로필
+        </button>
+
+      </div>
+
+    </div>
+
+  `);
 }
-if(cat===3&&success&&p.age>=22&&Math.random()<.28){p.category=4;p.team=p.preferred;p.contract=rnd(1,3);next="F1 시트 제안을 받았습니다!";}
-if(p.category===4&&p.age>=34&&p.ovr<70&&Math.random()<.35){p.contract=0;next="F1 팀에서 재계약에 실패했습니다."}
-save();shell(`<div class="hero"><div class="muted">${p.age}세</div><h1>커리어 결정</h1><p>${next}</p><div class="row"><button onclick="seasonIntro()">시즌 시작</button><button onclick="market('다른 팀을 찾아볼 수도 있습니다.')">드라이버 시장 보기</button><button onclick="profile()">프로필</button></div></div>`);
+
+
+/* =========================
+   드라이버 시장
+========================= */
+
+function showMarket(message){
+
+  const offers=[];
+
+
+  if(player.category>0){
+
+    offers.push(
+      `${categories[player.category-1]} 상위 팀 — 재도전 계약`
+    );
+
+  }
+
+
+  if(player.category<4){
+
+    offers.push(
+      `${categories[player.category]} 하위/중위 팀 — ${randomInt(1,2)}년 계약`
+    );
+
+  }
+
+
+  offers.push(
+    "F1 테스트 드라이버 — 테스트 결과에 따라 기회"
+  );
+
+
+  render(`
+
+    <div class="card">
+
+      <h2>
+        📝 드라이버 시장
+      </h2>
+
+      <p>
+        ${escapeHTML(message)}
+      </p>
+
+      ${offers.map(function(offer,index){
+
+        return `
+          <button
+            class="choice"
+            onclick="acceptOffer(${index})"
+          >
+            ${offer}
+          </button>
+        `;
+
+      }).join("")}
+
+
+      <button
+        onclick="retire()"
+        style="margin-top:10px"
+      >
+        은퇴
+      </button>
+
+    </div>
+
+  `);
 }
-function market(msg){
-let offers=[];
-if(p.category>0)offers.push(`${categories[p.category-1]} 상위 팀 — 재도전 계약`);
-if(p.category<4)offers.push(`${categories[p.category]} 하위/중위 팀 — ${rnd(1,2)}년 계약`);
-offers.push("F1 테스트 드라이버 — 테스트 결과에 따라 기회");
-shell(`<div class="card"><h2>📝 드라이버 시장</h2><p>${msg}</p>${offers.map((x,i)=>`<button class="choice" onclick="acceptOffer(${i})">${x}</button>`).join("")}<button onclick="retire()" style="margin-top:10px">은퇴</button></div>`);
+
+
+/* =========================
+   시장 계약
+========================= */
+
+function acceptOffer(index){
+
+  if(index===0 && player.category>0){
+
+    player.category--;
+
+  }else if(index===1 && player.category<4){
+
+    /* 현재 카테고리 유지 */
+
+  }else{
+
+    testDrive();
+    return;
+
+  }
+
+
+  player.contract=
+    randomInt(1,2);
+
+  player.team=
+    teamName();
+
+  saveGame();
+
+  seasonIntro();
 }
-function acceptOffer(i){
-if(i===0&&p.category>0)p.category--;else if(i===1&&p.category<4){}else{testDrive();return}
-p.contract=rnd(1,2);p.team=categories[p.category]+" 팀";save();seasonIntro();
-}
+
+
+/* =========================
+   테스트
+========================= */
+
 function testDrive(){
-let chance=clamp(45+(p.ovr-65)*1.5+p.stats[5]*.2,10,90),pass=Math.random()*100<chance;p.tests++;
-shell(`<div class="hero"><h1>${pass?"🟢 테스트 합격":"🔴 테스트 탈락"}</h1><p>테스트 결과: <b>${pass?"합격":"탈락"}</b></p><p class="muted">이번 결과는 드라이버 시장에서의 다음 기회에 영향을 줍니다.</p><div class="row">${pass?'<button onclick="testPass()">F2 테스트 계약</button>':'<button onclick="afterTestFail()">다시 도전</button>'}<button onclick="retire()">커리어 종료</button></div></div>`);
+
+  const chance=
+    clamp(
+      45+
+      (player.ovr-65)*1.5+
+      player.stats[5]*0.2,
+      10,
+      90
+    );
+
+
+  const pass=
+    Math.random()*100<chance;
+
+
+  player.tests++;
+
+
+  render(`
+
+    <div class="hero">
+
+      <h1>
+        ${
+          pass
+          ? "🟢 테스트 합격"
+          : "🔴 테스트 탈락"
+        }
+      </h1>
+
+      <p>
+        테스트 결과:
+        <b>
+          ${pass?"합격":"탈락"}
+        </b>
+      </p>
+
+      <p class="muted">
+        이번 결과는 드라이버 시장에서의
+        다음 기회에 영향을 줍니다.
+      </p>
+
+      <div class="row">
+
+        ${
+          pass
+
+          ?
+
+          `
+          <button onclick="testPass()">
+            F2 테스트 계약
+          </button>
+          `
+
+          :
+
+          `
+          <button onclick="afterTestFail()">
+            다시 도전
+          </button>
+          `
+        }
+
+
+        <button onclick="retire()">
+          커리어 종료
+        </button>
+
+      </div>
+
+    </div>
+
+  `);
 }
-function testPass(){p.category=3;p.team="F2 테스트 계약";p.contract=1;save();seasonIntro()}
-function afterTestFail(){if(p.tests>=3){retire()}else{market("테스트에 실패했지만 다른 기회를 찾을 수 있습니다.")}}
-function retire(){shell(`<div class="hero center"><div class="result">🏁</div><h1>커리어 종료</h1><p>${p.age}세까지의 레이싱 커리어가 막을 내렸습니다.</p><p>최종 OVR <b>${p.ovr}</b> · 최고 도달 카테고리 <b>${categories[Math.max(...p.history.map(x=>categories.indexOf(x.cat)).concat([p.category]))]}</b></p><button onclick="home()">처음으로</button></div>`)}
-function continueGame(){seasonIntro()}
-load();home();
+
+function testPass(){
+
+  player.category=3;
+
+  player.team=
+    "F2 테스트 계약";
+
+  player.contract=1;
+
+  saveGame();
+
+  seasonIntro();
+}
+
+function afterTestFail(){
+
+  if(player.tests>=3){
+
+    retire();
+
+  }else{
+
+    showMarket(
+      "테스트에 실패했지만 다른 기회를 찾을 수 있습니다."
+    );
+
+  }
+}
+
+
+/* =========================
+   은퇴
+========================= */
+
+function retire(){
+
+  const highest=Math.max(
+    ...player.history.map(function(history){
+
+      return categories.indexOf(
+        history.category
+      );
+
+    }),
+
+    player.category
+  );
+
+
+  render(`
+
+    <div class="hero center">
+
+      <div class="result">
+        🏁
+      </div>
+
+      <h1>
+        커리어 종료
+      </h1>
+
+      <p>
+        ${player.age}세까지의
+        레이싱 커리어가 막을 내렸습니다.
+      </p>
+
+      <p>
+        최종 OVR
+        <b>${player.ovr}</b>
+        ·
+        최고 도달 카테고리
+        <b>${categories[highest]}</b>
+      </p>
+
+      <button onclick="showHome()">
+        처음으로
+      </button>
+
+    </div>
+
+  `);
+}
+
+
+/* =========================
+   이어하기
+========================= */
+
+function continueGame(){
+
+  if(!player){
+
+    showHome();
+    return;
+
+  }
+
+  seasonIntro();
+}
+
+
+/* =========================
+   시작
+========================= */
+
+loadGame();
+
+showHome();
+
 </script>
+
 </body>
 </html>
